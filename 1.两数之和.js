@@ -27,4 +27,3 @@ var nums = [2, 7, 11, 15]
 var target = 9
 var res = twoSum(nums, target)
 console.log(res)
-
