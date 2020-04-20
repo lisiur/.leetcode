@@ -84,4 +84,6 @@ if __name__ == '__main__':
         repo.git.add('README.md')
         repo.git.commit('-m', 'docs: update progress')
         print('updated README.md')
+    else:
+        print('nothing changed')
 
