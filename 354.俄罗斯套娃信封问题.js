@@ -14,10 +14,16 @@ var maxEnvelopes = function (envelopes) {
     return 0
   }
   const dp = new Array(envelopes.length).fill(1)
-  envelopes.sort((a, b) => a[0] - b[0])
+  envelopes.sort((a, b) => {
+    if (a[0] === b[0]) {
+      return b[1] - a[1]
+    } else {
+      return a[0] - b[0]
+    }
+  })
   for (let i = 1; i < envelopes.length; i++) {
-    for (let j = i - 1; j >= 0; j--) {
-      if (envelopes[j][1] < envelopes[i][1] && envelopes[j][0] < envelopes[i][0]) {
+    for (let j = 0; j < i; j++) {
+      if (envelopes[j][1] < envelopes[i][1]) {
         dp[i] = Math.max(dp[i], dp[j] + 1)
       }
     }
