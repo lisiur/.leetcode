@@ -10,31 +10,24 @@
  * @return {number[][]}
  */
 var threeSum = function (nums) {
-  nums.sort((a, b) => a - b)
-  let set = new Set()
-  const rst = []
+  nums.sort((a, b) => a - b);
+  const rst = [];
   for (let i = 0; i < nums.length; i++) {
-    if (nums[i] > 0) {
-      break
-    }
-    let l = i + 1
-    let r = nums.length - 1
+    if (nums[i] > 0) break;
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+    let l = i + 1;
+    let r = nums.length - 1;
     while (l < r) {
-      let sum = nums[i] + nums[l] + nums[r]
-      if (sum === 0) {
-        if (!set.has(`${nums[i]},${nums[l]}`)) {
-          rst.push([nums[i], nums[l], nums[r]])
-          set.add(`${nums[i]},${nums[l]}`)
-        }
-        l++
-      } else if (sum < 0) {
-        l++
+      let sum = nums[i] + nums[l] + nums[r];
+      if (sum <= 0) {
+        if (sum === 0) { rst.push([nums[i], nums[l], nums[r]]); }
+        do { l++; } while (l < r && nums[l] === nums[l - 1]);
       } else {
-        r--
+        do { r--; } while (l < r && nums[r] === nums[r + 1]);
       }
     }
   }
-  return rst
+  return rst;
 };
 // @lc code=end
 
