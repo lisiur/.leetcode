@@ -9,28 +9,25 @@
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n) {
-  if (n === 0) {
-    return 1
+var climbStairs = function (n) {
+  if (n <= 2) {
+    return [1,1,2][n]
   }
-  if (n === 1) {
-    return 1
+  let a = 1, b = 2, c;
+  n -= 2;
+  while (n--) {
+    c = a + b;
+    a = b;
+    b = c;
   }
-  if (n === 2) {
-    return 2
-  }
-
-  var a = 1, b = 2, c
-  n -= 2
-  while (n-- > 0) {
-    c = a + b
-    a = b
-    b = c
-  }
-  return c
+  return c;
 };
 // @lc code=end
 
-var n = 1
-var res = climbStairs(n)
-console.log(res)
+var n = 1;
+var res = climbStairs(n);
+console.log(res);
+
+// @after-stub-for-debug-begin
+module.exports = climbStairs;
+// @after-stub-for-debug-end
