@@ -78,7 +78,7 @@ if __name__ == '__main__':
     if need_update:
         with open('./README.md', 'w') as f:
             f.writelines(lines)
-            print('current: ', lines)
+            print(lines[4] + lines[6] )
 
         repo = Repo.init(path='.')
 
