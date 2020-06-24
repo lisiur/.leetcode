@@ -10,16 +10,16 @@
  * @return {number[][]}
  */
 var permute = function(nums) {
-  return bfs(nums)
+  return rec(nums)
 };
 
-function bfs(arr, pre = [], index = 0, rst = []) {
+function rec(arr, pre = [], index = 0, rst = []) {
   if (index === arr.length) {
     rst.push(pre)
   }
   for (let i = index; i < arr.length; i++) {
     exchange(arr, index, i)
-    gen(arr, [...pre, arr[index]], index + 1, rst)
+    rec(arr, [...pre, arr[index]], index + 1, rst)
     exchange(arr, index, i)
   }
   return rst
