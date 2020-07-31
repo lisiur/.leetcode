@@ -13,20 +13,8 @@
  * }
  */
 function getDepth(tree, curr = 0) {
-  if (!tree) {
-    return curr
-  } else {
-    curr += 1
-  }
-  if (tree.left && tree.right) {
-    return Math.max(getDepth(tree.left, curr), getDepth(tree.right, curr))
-  } else if (tree.left && !tree.right) {
-    return getDepth(tree.left, curr)
-  } else if (tree.right && !tree.left) {
-    return getDepth(tree.right, curr)
-  } else {
-    return curr
-  }
+  if (!tree) return curr
+  return Math.max(getDepth(tree.left, curr + 1), getDepth(tree.right, curr + 1))
 }
 
 /**

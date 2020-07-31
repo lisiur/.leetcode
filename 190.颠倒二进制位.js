@@ -55,7 +55,18 @@
  * @return {number} - a positive integer
  */
 var reverseBits = function(n) {
-    
+    let [res, m] = [0, 31]
+    // js 中使用 << 会将数据截断为有符号32位，所以要使用 >>> 0 强制转换为无符号 32 位
+    while (n) {
+        res += (n & 1) << m >>> 0
+        n >>>= 1
+        m--
+    }
+    return res
 };
 // @lc code=end
 
+
+// @after-stub-for-debug-begin
+module.exports = reverseBits;
+// @after-stub-for-debug-end
