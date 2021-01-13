@@ -50,7 +50,7 @@ if __name__ == '__main__':
         .format_map(vars())
 
     need_update = False
-    with open('./README.md', 'r') as f:
+    with open('./README.md', encoding='utf-8') as f:
         lines = f.readlines()
         insert_index = -1
         for line in lines:
@@ -76,9 +76,9 @@ if __name__ == '__main__':
                 need_update = True
 
     if need_update:
-        with open('./README.md', 'w') as f:
+        with open('./README.md', 'w', encoding='utf-8') as f:
             f.writelines(lines)
-            print(lines[4] + lines[6] )
+            print(lines[4] + lines[6])
 
         repo = Repo.init(path='.')
 
