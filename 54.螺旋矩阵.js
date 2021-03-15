@@ -43,6 +43,28 @@ function turn(matrix, m, n, rows, cols) {
     }
     return ret
 }
+
+var spiralOrder = function(matrix) {
+    if (matrix.length === 0) return []
+    let m = matrix.length
+    let n = matrix[0].length
+    let ret = []
+    let i = 0
+    let j = 0
+    let di = 0
+    let dj = 1
+    for (let _ = 0; _ < m * n; _++) {
+        ret.push(matrix[i][j])
+        matrix[i][j] = 101
+        if (matrix[(i + di) % m][(j + dj) % n] === 101) {
+            [di, dj] = [dj, -di]
+        }
+        i += di
+        j += dj
+    }
+    return ret
+
+}
 // @lc code=end
 
 
