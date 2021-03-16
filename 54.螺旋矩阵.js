@@ -56,11 +56,11 @@ var spiralOrder = function(matrix) {
     for (let _ = 0; _ < m * n; _++) {
         ret.push(matrix[i][j])
         matrix[i][j] = 101
-        if (matrix[(i + di) % m][(j + dj) % n] === 101) {
+        if (matrix[(i + di + m) % m][(j + dj + n) % n] === 101) {
             [di, dj] = [dj, -di]
         }
-        i += di
-        j += dj
+        i = (i + di + m) % m
+        j = (j + dj + n) % n
     }
     return ret
 
