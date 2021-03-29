@@ -58,12 +58,26 @@ var reverseBits = function(n) {
     let [res, m] = [0, 31]
     // js 中使用 << 会将数据截断为有符号32位，所以要使用 >>> 0 强制转换为无符号 32 位
     while (n) {
-        res += (n & 1) << m >>> 0
+        res |= (n & 1) << m
         n >>>= 1
         m--
     }
-    return res
+    return res >>> 0
 };
+
+var reverseBits = function(n) {
+    const M1 = 0x55555555;
+    const M2 = 0x33333333;
+    const M4 = 0x0f0f0f0f;
+    const M8 = 0x00ff00ff;
+
+    n = n >>> 1 & M1 | (n & M1) << 1;
+    n = n >>> 2 & M2 | (n & M2) << 2;
+    n = n >>> 4 & M4 | (n & M4) << 4;
+    n = n >>> 8 & M8 | (n & M8) << 8;
+
+    return (n >>> 16 | n << 16) >>> 0;
+}
 // @lc code=end
 
 
