@@ -20,7 +20,7 @@ var findMin$ = function(nums, start, end) {
     if (nums[start] <= nums[mid]) {
         return Math.min(nums[start], findMin$(nums, mid + 1, end))
     } else {
-        return Math.min(findMin$(nums, start + 1, mid), findMin$(nums, mid + 1, end))
+        return findMin$(nums, start + 1, mid)
     }
 }
 // @lc code=end
