@@ -6,6 +6,7 @@
 
 // @lc code=start
 /**
+ * 暴力
  * @param {number[]} height
  * @return {number}
  */
@@ -35,6 +36,7 @@ var trap = function(height) {
 };
 
 /**
+ * 栈
  * @param {number[]} height
  * @return {number}
  */
@@ -60,6 +62,7 @@ var trap = function(height) {
 };
 
 /**
+ * 双指针解法
  * @param {number[]} height
  * @return {number}
  */
@@ -70,19 +73,13 @@ var trap = function(height) {
     let maxRight = 0
     let ans = 0
     while (left < right) {
-        if (height[left] <= height[right]) {
-            if (height[left] >= maxLeft) {
-                maxLeft = height[left]
-            } else {
-                ans += maxLeft - height[left]
-            }
+        maxLeft = Math.max(maxLeft, height[left])
+        maxRight = Math.max(maxRight, height[right])
+        if (maxLeft <= maxRight) {
+            ans += maxLeft - height[left]
             left++
         } else {
-            if (height[right] >= maxRight) {
-                maxRight = height[right]
-            } else {
-                ans += maxRight - height[right]
-            }
+            ans += maxRight - height[right]
             right--
         }
     }
