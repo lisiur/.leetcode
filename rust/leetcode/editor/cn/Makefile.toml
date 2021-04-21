@@ -1,2 +1,2 @@
-[tasks.update-rank]
+[tasks.updaterank]
 script = "cd C:\\Users\\lisiu\\.leetcode && python updaterank.py"
